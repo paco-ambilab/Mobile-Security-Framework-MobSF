@@ -149,9 +149,12 @@ APPX_MIME = [
 # ===============================================
 
 # ============DJANGO SETTINGS =================
+CORS_ORIGIN_ALLOW_ALL = True
+CORS_ALLOW_CREDENTIALS = True
+
 DEBUG = True
 DJANGO_LOG_LEVEL = DEBUG
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['mobsf', '*']
 # Application definition
 INSTALLED_APPS = (
     # 'django.contrib.admin',
@@ -164,8 +167,10 @@ INSTALLED_APPS = (
     'DynamicAnalyzer',
     'MobSF',
     'MalwareAnalyzer',
+    'corsheaders', #cors issue, detail: https://www.prisma.io/blog/enabling-cors-for-express-graphql-apollo-server-1ef999bfb38d
 )
 MIDDLEWARE_CLASSES = (
+	'corsheaders.middleware.CorsMiddleware', #cors issue, detail: https://www.prisma.io/blog/enabling-cors-for-express-graphql-apollo-server-1ef999bfb38d
     'django.middleware.security.SecurityMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
